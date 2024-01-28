@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
-
+import * as Yup from 'yup';
 import { ContactForm } from './ContactForm/ContactForm'
 import { ContactList } from './ContactList/ContactList'
 import { SearchBox } from './SearchBox/SearchBox'
+import css from './App.module.css'
 
-import * as Yup from 'yup';
 
 const initialContacts = [
   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -56,12 +56,16 @@ function App() {
   );
 
   return (
-    <>
-      <h1>Phonebook</h1>
-      <ContactForm onAdd={addContact}  validationSchema={validationSchema}/>
-      <SearchBox inputValue={inputValue} handleChange={handleChange}/>
-      <ContactList contacts={visibleContacts} onDelete={deleteContact}/>
-    </>
+    <div className={css.container}>
+      <div>
+        <h1 className={css.title}>Phonebook</h1>
+        <ContactForm onAdd={addContact}  validationSchema={validationSchema}/>
+      </div>
+      <div className={css.searchWrap}>
+        <SearchBox inputValue={inputValue} handleChange={handleChange}/>
+        <ContactList contacts={visibleContacts} onDelete={deleteContact}/>
+      </div>
+    </div>
   )
 }
 

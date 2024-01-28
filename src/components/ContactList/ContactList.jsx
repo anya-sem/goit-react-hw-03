@@ -1,9 +1,9 @@
 import { Contact } from "../Contact/Contact"
+import css from './ContactList.module.css'
 
 export const ContactList = ({contacts, onDelete}) => {
     return (
-        <div>
-            <ul>
+            <ul className={css.wrapper}>
                 {contacts.map(({ id, name, number }) => {
                     return <Contact
                         key={id}
@@ -14,6 +14,5 @@ export const ContactList = ({contacts, onDelete}) => {
                   />;
                 })}
             </ul>
-        </div>
     )
 }
